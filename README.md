@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Voice Memo Repository
+### What is this?
+This is a service consisting of a Javascript (React) frontend and Node backend for quickly and easily recording, storing (and removing), and sharing short audio recordings made natively in the browser.
 
-## Available Scripts
+### What is this written in?
+- Javascript (React),
+- Node.js.
 
-In the project directory, you can run:
+### What are some of the main features?
+- Frontend (website):
+	* Uses React with Material-UI to present a responsive and simple UI,
+	* Uses the Media Stream API for native in-browser audio recording, compression, and playback,
+	* Uses uuidv4 and the Web Storage API for identification purposes (no manual login/registration required to provide a list of a particular browser's past recordings).
+- Backend (server):
+	* Uses Express to provide a simple server,
+	* Uses Multer for handling file uploads,
+	* Uses lowdb for storing a database of recordings per user,
+	* Regularly removes old recordings and their corresponding entries.
 
-### `npm start`
+### What's the point?
+Mostly practicing React, Node, and using various APIs.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+That being said, there is a surprising lack of websites offering quick and easy ways of sharing and storing recordings made with the use of the Media Stream API. Most either still use Flash or only offer downloads of the recordings, without being able to share the recordings with others.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### How do I use this?
+1. Provide necessary permissions,
+2. Press record button (note: the Media Stream API only allows for recording  on localhost or https),
+3. Press stop button or wait 5 minutes,
+4. Press play button to listen to recording (optional),
+5. Press upload button,
+6. Press copy icon next to new entry in list of recordings,
+7. Share recording with other people.
 
-### `npm test`
+### Where can I use this?
+There will soon be a demo link here.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Future plans and things to do
+- [ ] Tidy up package.json scripts and upload demo,
+- [ ] Split the record and play modes into separate components? Having them combined into one component is good for minmaxing purposes, but it's a bit of a mess to maintain,
+- [ ] Move database to some NoSQL database (MongoDB)? Could be overkill.
