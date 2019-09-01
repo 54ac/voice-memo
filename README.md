@@ -34,9 +34,14 @@ That being said, there is a surprising lack of websites offering quick and easy 
 ### Where can I use this?
 There will soon be a demo link here.
 
+### How do I launch this myself?
+1. `git clone https://github.com/rowrawer/voice-memo.git .`
+2. `npm i`
+3. `npm start`
+
 ---
 
 ### Future plans and things to do
-- [ ] Tidy up package.json scripts and upload demo,
+- [ ] Upload demo,
 - [ ] Split the record and play modes into separate components? Having them combined into one component is good for minmaxing purposes, but it's a bit of a mess to maintain,
 - [ ] Move database to some NoSQL database (MongoDB)? Could be overkill.
