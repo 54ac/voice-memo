@@ -9,10 +9,19 @@ export default function Footer() {
 			<ListItem
 				dense
 				disableGutters
-				className="MuiListItem-prod"
+				className="MuiTypography-prod"
 				style={{ justifyContent: "center" }}
 			>
-				2019
+				This is a demo of&nbsp;
+				<a href="https://github.com/rowrawer/voice-memo"> this GitHub repo</a>.
+			</ListItem>
+			<ListItem
+				dense
+				disableGutters
+				className="MuiTypography-prod"
+				style={{ justifyContent: "center" }}
+			>
+				It is not meant for commercial use (or any use, really).
 			</ListItem>
 		</>
 	);

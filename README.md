@@ -1,6 +1,6 @@
 ## The Voice Memo Repository
 ### What is this?
-This is a service consisting of a Javascript (React) frontend and Node backend for quickly and easily recording, storing (and removing), and sharing short audio recordings made natively in the browser.
+This is a service consisting of a Javascript (React) frontend and Node backend for quickly and easily recording, storing, removing, and sharing short audio recordings made natively in the browser.
 
 ### What is this written in?
 - Javascript (React),
