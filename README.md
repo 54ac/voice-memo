@@ -32,7 +32,7 @@ That being said, there is a surprising lack of websites offering quick and easy 
 7. Share recording with other people.
 
 ### Where can I use this?
-There will soon be a demo link here.
+**[Check out this demo right here.](http://rowrawer.cf:5441/)**
 
 ### How do I launch this myself?
 1. `git clone https://github.com/rowrawer/voice-memo.git .`
@@ -42,6 +42,6 @@ There will soon be a demo link here.
 ---
 
 ### Future plans and things to do
-- [ ] Upload demo,
+- [x] ~~Upload demo,~~
 - [ ] Split the record and play modes into separate components? Having them combined into one component is good for minmaxing purposes, but it's a bit of a mess to maintain,
 - [ ] Move database to some NoSQL database (MongoDB)? Could be overkill.

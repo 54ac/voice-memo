@@ -121,7 +121,7 @@ app.post("/api/upload/:name", (req, res, next) => {
 });
 
 app.get("/api/play/:filename", (req, res, next) => {
-	fs.open(path.join(__dirname, "recordings", req.params.filename), err => {
+	fs.open(path.join(__dirname, "recordings", req.params.filename), "r", err => {
 		if (err && err.code === "ENOENT") {
 			res.status(404).send("not found");
 		} else if (err) {
