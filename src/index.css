@@ -27,6 +27,16 @@ html, body {
 	margin: auto;
 }
 
+@media only screen and (orientation: portrait) {
+	html, body {
+		font-size: calc((1vw + 1vh + .5vmin) / 0.75);
+	}
+
+	.App {
+		margin: auto 0;
+	}
+}
+
 .MuiPaper-prod {
 	padding: 1.5em;
 
