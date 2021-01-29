@@ -7,15 +7,15 @@
 		"url": "https://github.com/rowrawer"
 	},
 	"repository": "github:rowrawer/voice-memo",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"private": true,
 	"dependencies": {
 		"@material-ui/core": "^4.11.0",
 		"@material-ui/icons": "^4.9.1",
-		"clipboard-copy": "^3.1.0",
+		"clipboard-copy": "^4.0.1",
 		"cookie-parser": "^1.4.5",
 		"express": "^4.17.1",
-		"helmet": "^3.23.3",
+		"helmet": "^4.4.1",
 		"http-proxy-middleware": "^1.0.5",
 		"lowdb": "^1.0.0",
 		"moment": "^2.27.0",
@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"concurrently": "^5.2.0",
-		"eslint-config-prettier": "^6.11.0",
+		"eslint-config-prettier": "^7.2.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"eslint-plugin-react": "^7.20.3",
 		"eslint-plugin-react-hooks": "^4.0.8",

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import EntryButton from "./EntryButton";
 import Divider from "@material-ui/core/Divider";
 import Snackbar from "@material-ui/core/Snackbar";
 import copy from "clipboard-copy";
+import EntryButton from "./EntryButton";
 
 export default class EntryList extends Component {
 	constructor(props) {
@@ -44,18 +44,16 @@ export default class EntryList extends Component {
 						</span>
 					}
 				/>
-				{files.map(file => {
-					return (
-						<EntryButton
-							key={file.filename}
-							file={file}
-							copyURL={this.copyURL}
-							copied={copied}
-							deleteFile={deleteFile}
-							deleting={deleting}
-						/>
-					);
-				})}
+				{files.map(file => (
+					<EntryButton
+						key={file.filename}
+						file={file}
+						copyURL={this.copyURL}
+						copied={copied}
+						deleteFile={deleteFile}
+						deleting={deleting}
+					/>
+				))}
 			</>
 		);
 	}

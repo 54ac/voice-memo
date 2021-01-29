@@ -5,7 +5,7 @@ import Divider from "@material-ui/core/Divider";
 export default function Header(props) {
 	const { playMode } = props;
 
-	//add URL to main page if in playback mode
+	// add URL to main page if in playback mode
 	return (
 		<>
 			<ListItem

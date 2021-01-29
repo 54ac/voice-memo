@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import uuidv4 from "uuid/v4";
+import { v4 as uuidv4 } from "uuid";
 import Error from "./components/Error";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,15 +13,16 @@ import EntryList from "./components/EntryList";
 
 const theme = createMuiTheme({
 	typography: {
-		fontFamily: "'Roboto Mono', monospace",
-	},
+		fontFamily: "'Roboto Mono', monospace"
+	}
 });
+
+const timeStamp = time => new Date(1000 * time).toISOString().substr(15, 4);
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.record = this.record.bind(this);
-		this.timeStamp = this.timeStamp.bind(this);
 		this.stopRecording = this.stopRecording.bind(this);
 		this.playAudio = this.playAudio.bind(this);
 		this.stopAudio = this.stopAudio.bind(this);
@@ -42,25 +43,24 @@ export default class App extends Component {
 			error: false,
 			uploaded: false,
 			copied: false,
-			openSnackbar: false,
 			notFound: false,
-			deleting: false,
+			deleting: false
 		};
 	}
 
 	componentDidMount() {
-		let playMode = new URLSearchParams(window.location.search).get("play");
+		const playMode = new URLSearchParams(window.location.search).get("play");
 		if (playMode) {
-			//support and permission not necessary so just set them to true as a workaround
+			// support and permission not necessary so just set them to true as a workaround
 			this.setState({ playMode, support: true, permission: true });
 			this.initAudio();
 			fetch("api/play/" + playMode)
-				.then((response) => {
+				.then(response => {
 					if (response.status === 404) {
 						this.setState({ notFound: true });
 						return;
 					}
-					//this is from some official mozilla example
+					// this is from some official mozilla example
 					const reader = response.body.getReader();
 					return new ReadableStream({
 						start(controller) {
@@ -75,17 +75,17 @@ export default class App extends Component {
 									return pump();
 								});
 							}
-						},
+						}
 					});
 				})
-				.then((stream) => new Response(stream))
-				.then((response) => response.blob())
-				.then((blob) =>
+				.then(stream => new Response(stream))
+				.then(response => response.blob())
+				.then(blob =>
 					this.setState({ blob }, () => {
 						this.audio.src = window.URL.createObjectURL(this.state.blob);
 					})
 				)
-				.catch((err) => {
+				.catch(err => {
 					console.error(err);
 					this.setState({ error: true });
 				});
@@ -96,9 +96,9 @@ export default class App extends Component {
 				this.setState({ support: true });
 				navigator.mediaDevices
 					.getUserMedia({
-						audio: true,
+						audio: true
 					})
-					.then((stream) => {
+					.then(stream => {
 						this.setState({ permission: true });
 
 						if (!localStorage.getItem("uuid"))
@@ -107,9 +107,9 @@ export default class App extends Component {
 						this.uuid = localStorage.getItem("uuid");
 
 						fetch("api/list/" + this.uuid)
-							.then((res) => res.json())
-							.then((json) => this.setState({ files: json.files }))
-							.catch((err) => {
+							.then(res => res.json())
+							.then(json => this.setState({ files: json.files }))
+							.catch(err => {
 								console.error(err);
 								this.setState({ error: true });
 							});
@@ -117,7 +117,7 @@ export default class App extends Component {
 						this.initAudio();
 						this.initRecord(stream);
 					})
-					.catch((err) => {
+					.catch(err => {
 						this.setState({ error: true });
 						console.error(err);
 					});
@@ -131,19 +131,19 @@ export default class App extends Component {
 		this.audio = new Audio();
 
 		this.audio.ondurationchange = async () => {
-			//chrome bug workaround
+			// chrome bug workaround
 			while (this.audio.duration === Infinity) {
-				await new Promise((r) => setTimeout(r, 1000));
+				await new Promise(r => setTimeout(r, 1000));
 				this.audio.currentTime = 10000000 * Math.random();
 			}
 			this.setState({
-				duration: this.audio.duration,
+				duration: this.audio.duration
 			});
 		};
 
 		this.audio.ontimeupdate = () => {
 			this.setState({
-				remaining: this.audio.duration - this.audio.currentTime,
+				remaining: this.audio.duration - this.audio.currentTime
 			});
 		};
 
@@ -156,11 +156,11 @@ export default class App extends Component {
 		this.mediaRecorder = new MediaRecorder(stream);
 		this.chunks = [];
 
-		this.mediaRecorder.ondataavailable = (e) => this.chunks.push(e.data);
+		this.mediaRecorder.ondataavailable = e => this.chunks.push(e.data);
 
 		this.mediaRecorder.onstop = () => {
-			let blob = new Blob(this.chunks, {
-				type: "audio/ogg",
+			const blob = new Blob(this.chunks, {
+				type: "audio/ogg"
 			});
 			if (blob)
 				this.setState({ blob }, () => {
@@ -177,11 +177,10 @@ export default class App extends Component {
 			blob: false,
 			uploaded: false,
 			duration: 0,
-			remaining: 0,
+			remaining: 0
 		});
 		this.interval = setInterval(() => {
-			const newState = this.state.recRemaining - 0.5;
-			this.setState({ recRemaining: newState });
+			this.setState(prev => ({ recRemaining: prev.recRemaining - 0.5 }));
 		}, 500);
 		setTimeout(() => {
 			this.stopRecording();
@@ -191,16 +190,16 @@ export default class App extends Component {
 	stopRecording() {
 		this.mediaRecorder.stop();
 		clearInterval(this.interval);
-		this.setState({
+		this.setState(prev => ({
 			recording: false,
-			recRemaining: this.state.recRemainingDefault,
-		});
+			recRemaining: prev.recRemainingDefault
+		}));
 	}
 
 	playAudio() {
 		this.audio.play();
 		this.setState({
-			playing: true,
+			playing: true
 		});
 	}
 
@@ -210,27 +209,23 @@ export default class App extends Component {
 		this.setState({ playing: false });
 	}
 
-	timeStamp(time) {
-		return new Date(1000 * time).toISOString().substr(15, 4);
-	}
-
 	upload() {
 		this.setState({ uploading: true });
 		const body = new FormData();
 		body.append("recording", this.state.blob);
 		fetch("api/upload/" + this.uuid, {
 			method: "POST",
-			body,
+			body
 		})
-			.then((res) => res.json())
-			.then((json) => {
+			.then(res => res.json())
+			.then(json => {
 				this.setState({
 					files: json.files,
 					uploading: false,
-					uploaded: true,
+					uploaded: true
 				});
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error(err);
 				this.setState({ error: true });
 			});
@@ -239,9 +234,9 @@ export default class App extends Component {
 	deleteFile(filename) {
 		this.setState({ deleting: true });
 		fetch("api/delete/" + this.uuid + "/" + filename, { method: "POST" })
-			.then((res) => res.json())
-			.then((json) => this.setState({ files: json.files, deleting: false }))
-			.catch((err) => {
+			.then(res => res.json())
+			.then(json => this.setState({ files: json.files, deleting: false }))
+			.catch(err => {
 				console.error(err);
 				this.setState({ error: true });
 			});
@@ -264,7 +259,7 @@ export default class App extends Component {
 			uploaded,
 			copied,
 			notFound,
-			deleting,
+			deleting
 		} = this.state;
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -288,7 +283,7 @@ export default class App extends Component {
 										blob={blob}
 										recRemaining={recRemaining}
 										record={this.record}
-										timeStamp={this.timeStamp}
+										timeStamp={timeStamp}
 										stopRecording={this.stopRecording}
 									/>
 								)}
@@ -299,7 +294,7 @@ export default class App extends Component {
 									duration={duration}
 									playAudio={this.playAudio}
 									stopAudio={this.stopAudio}
-									timeStamp={this.timeStamp}
+									timeStamp={timeStamp}
 								/>
 								{!playMode && (
 									<>

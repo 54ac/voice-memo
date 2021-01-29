@@ -13,7 +13,14 @@ export default function Footer() {
 				style={{ justifyContent: "center" }}
 			>
 				This is a demo of&nbsp;
-				<a href="https://github.com/rowrawer/voice-memo"> this GitHub repo</a>.
+				<a
+					target="_blank"
+					rel="noreferrer noopener"
+					href="https://github.com/rowrawer/voice-memo"
+				>
+					this GitHub repo
+				</a>
+				.
 			</ListItem>
 			<ListItem
 				dense
