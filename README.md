@@ -32,10 +32,10 @@ That being said, there is a surprising lack of websites offering quick and easy 
 7. Share recording with other people.
 
 ### Where can I use this?
-**[Check out this demo right here.](https://rowrawer.com:5441/)**
+**[Check out this demo right here.](https://54ac.bio:5441/)**
 
 ### How do I launch this myself?
-1. `git clone https://github.com/rowrawer/voice-memo.git .`
+1. `git clone https://github.com/54ac/voice-memo.git .`
 2. `npm i`
 3. `npm start`
 
