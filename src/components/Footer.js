@@ -16,7 +16,7 @@ export default function Footer() {
 				<a
 					target="_blank"
 					rel="noreferrer noopener"
-					href="https://github.com/rowrawer/voice-memo"
+					href="https://github.com/54ac/voice-memo"
 				>
 					this GitHub repo
 				</a>

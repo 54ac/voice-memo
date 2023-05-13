@@ -2,11 +2,11 @@
 	"name": "voice-memo",
 	"description": "A service consisting of a Javascript (React) frontend and Node backend for quickly and easily recording, storing, removing, and sharing short audio recordings made natively in the browser.",
 	"author": {
-		"name": "rowrawer",
-		"email": "rowrawer@gmail.com",
-		"url": "https://github.com/rowrawer"
+		"name": "54ac",
+		"email": "me@54ac.bio",
+		"url": "https://github.com/54ac"
 	},
-	"repository": "github:rowrawer/voice-memo",
+	"repository": "github:54ac/voice-memo",
 	"version": "0.2.1",
 	"private": true,
 	"dependencies": {
