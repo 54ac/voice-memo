@@ -44,7 +44,7 @@ export default class EntryList extends Component {
 						</span>
 					}
 				/>
-				{files.map(file => (
+				{files.map((file) => (
 					<EntryButton
 						key={file.filename}
 						file={file}

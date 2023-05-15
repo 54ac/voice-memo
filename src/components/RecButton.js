@@ -6,14 +6,8 @@ import StopIcon from "@material-ui/icons/Stop";
 import RefreshIcon from "@material-ui/icons/Refresh";
 
 export default function RecButton(props) {
-	const {
-		recording,
-		blob,
-		recRemaining,
-		record,
-		timeStamp,
-		stopRecording
-	} = props;
+	const { recording, blob, recRemaining, record, timeStamp, stopRecording } =
+		props;
 
 	return (
 		<ListItem className="MuiListItem-prod" style={{ justifyContent: "center" }}>

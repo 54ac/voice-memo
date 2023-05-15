@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -16,7 +16,7 @@ import copy from "clipboard-copy";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 
-const theme = createMuiTheme({
+const theme = createTheme({
 	typography: {
 		fontFamily: "'Roboto Mono', monospace"
 	}

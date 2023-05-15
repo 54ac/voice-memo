@@ -40,9 +40,7 @@ export default function EntryButton(props) {
 				className="MuiListItemText-prod"
 				primaryTypographyProps={{ className: "MuiTypography-prod" }}
 			>
-				{moment(file.date)
-					.calendar()
-					.toLocaleLowerCase()}
+				{moment(file.date).calendar().toLocaleLowerCase()}
 			</ListItemText>
 			<ListItemIcon className="MuiListItemIcon-prod">
 				{deleting ? (

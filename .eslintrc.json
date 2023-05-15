@@ -1,20 +1,56 @@
 {
-	"parser": "babel-eslint",
-	"extends": [
-		"eslint:recommended",
-		"plugin:prettier/recommended",
-		"plugin:react/recommended"
-	],
-	"plugins": [
-		"prettier",
-		"react"
-	],
-	"rules": {
-		"react/prop-types": "off"
+	"root": true,
+	"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+	"parser": "@babel/eslint-parser",
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
 	},
 	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
 		"ecmaFeatures": {
+			"modules": true,
 			"jsx": true
 		}
+	},
+	"plugins": ["react", "prettier"],
+	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"useTabs": true,
+				"resolveGlobalModules": true,
+				"singleQuote": false,
+				"trailingComma": "none"
+			}
+		],
+		"react/react-in-jsx-scope": "off",
+		"arrow-body-style": "off",
+		"prefer-arrow-callback": "off",
+		"no-unused-vars": 1,
+		"no-console": 1,
+		"quotes": [0, "double"],
+		"react/prop-types": 0,
+		"no-plusplus": [
+			2,
+			{
+				"allowForLoopAfterthoughts": true
+			}
+		],
+		"eqeqeq": [1, "smart"],
+		"strict": [0, "global"],
+		"no-unused-expressions": [
+			2,
+			{
+				"allowTernary": true
+			}
+		]
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2021": true
 	}
 }

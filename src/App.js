@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { v4 as uuidv4 } from "uuid";
 import Error from "./components/Error";
@@ -11,13 +12,13 @@ import PlayButton from "./components/PlayButton";
 import UploadButton from "./components/UploadButton";
 import EntryList from "./components/EntryList";
 
-const theme = createMuiTheme({
+const theme = createTheme({
 	typography: {
 		fontFamily: "'Roboto Mono', monospace"
 	}
 });
 
-const timeStamp = time => new Date(1000 * time).toISOString().substr(15, 4);
+const timeStamp = (time) => new Date(1000 * time).toISOString().substr(15, 4);
 
 export default class App extends Component {
 	constructor(props) {
@@ -55,7 +56,7 @@ export default class App extends Component {
 			this.setState({ playMode, support: true, permission: true });
 			this.initAudio();
 			fetch("api/play/" + playMode)
-				.then(response => {
+				.then((response) => {
 					if (response.status === 404) {
 						this.setState({ notFound: true });
 						return;
@@ -78,14 +79,14 @@ export default class App extends Component {
 						}
 					});
 				})
-				.then(stream => new Response(stream))
-				.then(response => response.blob())
-				.then(blob =>
+				.then((stream) => new Response(stream))
+				.then((response) => response.blob())
+				.then((blob) =>
 					this.setState({ blob }, () => {
 						this.audio.src = window.URL.createObjectURL(this.state.blob);
 					})
 				)
-				.catch(err => {
+				.catch((err) => {
 					console.error(err);
 					this.setState({ error: true });
 				});
@@ -98,7 +99,7 @@ export default class App extends Component {
 					.getUserMedia({
 						audio: true
 					})
-					.then(stream => {
+					.then((stream) => {
 						this.setState({ permission: true });
 
 						if (!localStorage.getItem("uuid"))
@@ -107,9 +108,9 @@ export default class App extends Component {
 						this.uuid = localStorage.getItem("uuid");
 
 						fetch("api/list/" + this.uuid)
-							.then(res => res.json())
-							.then(json => this.setState({ files: json.files }))
-							.catch(err => {
+							.then((res) => res.json())
+							.then((json) => this.setState({ files: json.files }))
+							.catch((err) => {
 								console.error(err);
 								this.setState({ error: true });
 							});
@@ -117,7 +118,7 @@ export default class App extends Component {
 						this.initAudio();
 						this.initRecord(stream);
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.setState({ error: true });
 						console.error(err);
 					});
@@ -133,7 +134,7 @@ export default class App extends Component {
 		this.audio.ondurationchange = async () => {
 			// chrome bug workaround
 			while (this.audio.duration === Infinity) {
-				await new Promise(r => setTimeout(r, 1000));
+				await new Promise((r) => setTimeout(r, 1000));
 				this.audio.currentTime = 10000000 * Math.random();
 			}
 			this.setState({
@@ -156,7 +157,7 @@ export default class App extends Component {
 		this.mediaRecorder = new MediaRecorder(stream);
 		this.chunks = [];
 
-		this.mediaRecorder.ondataavailable = e => this.chunks.push(e.data);
+		this.mediaRecorder.ondataavailable = (e) => this.chunks.push(e.data);
 
 		this.mediaRecorder.onstop = () => {
 			const blob = new Blob(this.chunks, {
@@ -180,7 +181,7 @@ export default class App extends Component {
 			remaining: 0
 		});
 		this.interval = setInterval(() => {
-			this.setState(prev => ({ recRemaining: prev.recRemaining - 0.5 }));
+			this.setState((prev) => ({ recRemaining: prev.recRemaining - 0.5 }));
 		}, 500);
 		setTimeout(() => {
 			this.stopRecording();
@@ -190,7 +191,7 @@ export default class App extends Component {
 	stopRecording() {
 		this.mediaRecorder.stop();
 		clearInterval(this.interval);
-		this.setState(prev => ({
+		this.setState((prev) => ({
 			recording: false,
 			recRemaining: prev.recRemainingDefault
 		}));
@@ -217,15 +218,15 @@ export default class App extends Component {
 			method: "POST",
 			body
 		})
-			.then(res => res.json())
-			.then(json => {
+			.then((res) => res.json())
+			.then((json) => {
 				this.setState({
 					files: json.files,
 					uploading: false,
 					uploaded: true
 				});
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 				this.setState({ error: true });
 			});
@@ -234,9 +235,9 @@ export default class App extends Component {
 	deleteFile(filename) {
 		this.setState({ deleting: true });
 		fetch("api/delete/" + this.uuid + "/" + filename, { method: "POST" })
-			.then(res => res.json())
-			.then(json => this.setState({ files: json.files, deleting: false }))
-			.catch(err => {
+			.then((res) => res.json())
+			.then((json) => this.setState({ files: json.files, deleting: false }))
+			.catch((err) => {
 				console.error(err);
 				this.setState({ error: true });
 			});
