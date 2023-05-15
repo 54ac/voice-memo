@@ -1,8 +1,12 @@
 /* eslint-disable no-console */
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
+import Paper from "@mui/material/Paper";
+import {
+	ThemeProvider,
+	StyledEngineProvider,
+	createTheme
+} from "@mui/material/styles";
+import List from "@mui/material/List";
 import { v4 as uuidv4 } from "uuid";
 import Error from "./components/Error";
 import Header from "./components/Header";
@@ -14,7 +18,15 @@ import EntryList from "./components/EntryList";
 
 const theme = createTheme({
 	typography: {
-		fontFamily: "'Roboto Mono', monospace"
+		fontFamily: ["Roboto Mono", "monospace"]
+	},
+	palette: {
+		secondary: {
+			main: "#f50057"
+		},
+		primary: {
+			main: "#d5d5d5"
+		}
 	}
 });
 
@@ -263,65 +275,67 @@ export default class App extends Component {
 			deleting
 		} = this.state;
 		return (
-			<MuiThemeProvider theme={theme}>
-				<div className="App">
-					<Paper className="MuiPaper-prod">
-						{error || !support || !permission || notFound ? (
-							<a href="/">
-								<Error
-									error={error}
-									support={support}
-									permission={permission}
-									notFound={notFound}
-								/>
-							</a>
-						) : (
-							<List className="MuiList-prod" dense disablePadding>
-								<Header playMode={playMode} />
-								{!playMode && (
-									<RecButton
-										recording={recording}
-										blob={blob}
-										recRemaining={recRemaining}
-										record={this.record}
-										timeStamp={timeStamp}
-										stopRecording={this.stopRecording}
+			<StyledEngineProvider injectFirst>
+				<ThemeProvider theme={theme}>
+					<div className="App">
+						<Paper className="MuiPaper-prod">
+							{error || !support || !permission || notFound ? (
+								<a href="/">
+									<Error
+										error={error}
+										support={support}
+										permission={permission}
+										notFound={notFound}
 									/>
-								)}
-								<PlayButton
-									playing={playing}
-									blob={blob}
-									remaining={remaining}
-									duration={duration}
-									playAudio={this.playAudio}
-									stopAudio={this.stopAudio}
-									timeStamp={timeStamp}
-								/>
-								{!playMode && (
-									<>
-										<UploadButton
+								</a>
+							) : (
+								<List className="MuiList-prod" dense disablePadding>
+									<Header playMode={playMode} />
+									{!playMode && (
+										<RecButton
+											recording={recording}
 											blob={blob}
-											uploading={uploading}
-											uploaded={uploaded}
-											upload={this.upload}
+											recRemaining={recRemaining}
+											record={this.record}
+											timeStamp={timeStamp}
+											stopRecording={this.stopRecording}
 										/>
-
-										{files.length > 0 && (
-											<EntryList
-												files={files}
-												copied={copied}
-												deleteFile={this.deleteFile}
-												deleting={deleting}
+									)}
+									<PlayButton
+										playing={playing}
+										blob={blob}
+										remaining={remaining}
+										duration={duration}
+										playAudio={this.playAudio}
+										stopAudio={this.stopAudio}
+										timeStamp={timeStamp}
+									/>
+									{!playMode && (
+										<>
+											<UploadButton
+												blob={blob}
+												uploading={uploading}
+												uploaded={uploaded}
+												upload={this.upload}
 											/>
-										)}
-									</>
-								)}
-								<Footer />
-							</List>
-						)}
-					</Paper>
-				</div>
-			</MuiThemeProvider>
+
+											{files.length > 0 && (
+												<EntryList
+													files={files}
+													copied={copied}
+													deleteFile={this.deleteFile}
+													deleting={deleting}
+												/>
+											)}
+										</>
+									)}
+									<Footer />
+								</List>
+							)}
+						</Paper>
+					</div>
+				</ThemeProvider>
+			</StyledEngineProvider>
 		);
 	}
 }

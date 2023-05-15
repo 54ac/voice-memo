@@ -1,8 +1,8 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import Button from "@material-ui/core/Button";
-import StopIcon from "@material-ui/icons/Stop";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import ListItem from "@mui/material/ListItem";
+import Button from "@mui/material/Button";
+import StopIcon from "@mui/icons-material/Stop";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 export default function PlayButton(props) {
 	const {

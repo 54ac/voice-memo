@@ -1,13 +1,13 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import CheckIcon from "@material-ui/icons/Check";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
+import ListItem from "@mui/material/ListItem";
+import CheckIcon from "@mui/icons-material/Check";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
 import moment from "moment";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import IconButton from "@material-ui/core/IconButton";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import IconButton from "@mui/material/IconButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function EntryButton(props) {
 	const { file, copyURL, copied, deleteFile, deleting } = props;

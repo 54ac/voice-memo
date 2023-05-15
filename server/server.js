@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require("express");
 const helmet = require("helmet");
 const multer = require("multer");
@@ -61,11 +62,13 @@ setInterval(cleanup, deleteInterval);
 app.use(helmet());
 app.use(cookieParser());
 
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
 	console.error(err.stack);
 	res.status(500).send("oh no error");
 });
 
+// eslint-disable-next-line no-unused-vars
 app.get("/api/list/:name", (req, res, next) => {
 	const files = handleList(req.params.name);
 	// the whole cookie thing is just rudimentary "security"

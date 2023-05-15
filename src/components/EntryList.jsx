@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Divider from "@material-ui/core/Divider";
-import Snackbar from "@material-ui/core/Snackbar";
+import Divider from "@mui/material/Divider";
+import Snackbar from "@mui/material/Snackbar";
 import copy from "clipboard-copy";
 import EntryButton from "./EntryButton";
 

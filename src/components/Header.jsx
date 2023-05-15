@@ -1,6 +1,6 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
 
 export default function Header(props) {
 	const { playMode } = props;

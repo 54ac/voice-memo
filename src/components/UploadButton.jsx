@@ -1,8 +1,8 @@
 import React from "react";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Button from "@material-ui/core/Button";
-import ListItem from "@material-ui/core/ListItem";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
+import ListItem from "@mui/material/ListItem";
 
 export default function UploadButton(props) {
 	const { blob, uploaded, uploading, upload } = props;

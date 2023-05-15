@@ -1,9 +1,9 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import Button from "@material-ui/core/Button";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import StopIcon from "@material-ui/icons/Stop";
-import RefreshIcon from "@material-ui/icons/Refresh";
+import ListItem from "@mui/material/ListItem";
+import Button from "@mui/material/Button";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import StopIcon from "@mui/icons-material/Stop";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 export default function RecButton(props) {
 	const { recording, blob, recRemaining, record, timeStamp, stopRecording } =

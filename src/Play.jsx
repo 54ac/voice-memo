@@ -1,27 +1,12 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import StopIcon from "@material-ui/icons/Stop";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import RefreshIcon from "@material-ui/icons/Refresh";
-import moment from "moment";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import copy from "clipboard-copy";
-import { Link } from "react-router-dom";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import StopIcon from "@mui/icons-material/Stop";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { Redirect } from "react-router";
-
-const theme = createTheme({
-	typography: {
-		fontFamily: "'Roboto Mono', monospace"
-	}
-});
-
 export default class Play extends Component {
 	constructor(props) {
 		super(props);
@@ -71,17 +56,7 @@ export default class Play extends Component {
 	}
 
 	render() {
-		const {
-			recording,
-			support,
-			permission,
-			blob,
-			playing,
-			duration,
-			remaining,
-			recRemaining,
-			files
-		} = this.state;
+		const { blob, playing, duration, remaining } = this.state;
 		return this.props.match.params.id ? (
 			<Paper className="MuiPaper-prod">
 				<List className="MuiList-prod" dense disablePadding>
