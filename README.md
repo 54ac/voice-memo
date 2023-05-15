@@ -10,7 +10,7 @@ This is a service consisting of a Javascript (React) frontend and Node backend f
 - Frontend (website):
 	* Uses React with Material-UI to present a responsive and simple UI,
 	* Uses the Media Stream API for native in-browser audio recording, compression, and playback,
-	* Uses uuidv4 and the Web Storage API for identification purposes (no manual login/registration required to provide a list of a particular browser's past recordings).
+	* Uses uuid and the Web Storage API for identification purposes (no manual login/registration required to provide a list of a particular browser's past recordings).
 - Backend (server):
 	* Uses Express to provide a simple server,
 	* Uses Multer for handling file uploads,
