@@ -21,12 +21,6 @@ This is a service consisting of a Javascript (React) frontend and Node backend f
   - Uses lowdb for storing a database of recordings per user,
   - Regularly removes old recordings and their corresponding entries.
 
-### What's the point?
-
-Mostly practicing React, Node, and using various APIs.
-
-That being said, there is a surprising lack of websites offering quick and easy ways of sharing and storing recordings made with the use of the Media Stream API. Most either still use Flash or only offer downloads of the recordings, without being able to share the recordings with others.
-
 ### How do I use this?
 
 1. Provide necessary permissions,
@@ -46,11 +40,3 @@ That being said, there is a surprising lack of websites offering quick and easy 
 1. `git clone https://github.com/54ac/voice-memo.git .`
 2. `npm i`
 3. `npm start`
-
----
-
-### Future plans and things to do
-
-- [x] ~~Upload demo,~~
-- [ ] Split the record and play modes into separate components? Having them combined into one component is good for minmaxing purposes, but it's a bit of a mess to maintain,
-- [ ] Move database to some NoSQL database (MongoDB)? Could be overkill.
