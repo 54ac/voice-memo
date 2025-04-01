@@ -46,11 +46,3 @@ That being said, there is a surprising lack of websites offering quick and easy 
 1. `git clone https://github.com/54ac/voice-memo.git .`
 2. `npm i`
 3. `npm start`
-
----
-
-### Future plans and things to do
-
-- [x] ~~Upload demo,~~
-- [ ] Split the record and play modes into separate components? Having them combined into one component is good for minmaxing purposes, but it's a bit of a mess to maintain,
-- [ ] Move database to some NoSQL database (MongoDB)? Could be overkill.

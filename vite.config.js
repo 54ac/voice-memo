@@ -12,5 +12,6 @@ export default defineConfig({
 			}
 		},
 		port: 5441
-	}
+	},
+	base: "/voice-memo"
 });

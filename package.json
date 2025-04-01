@@ -3,7 +3,7 @@
 	"description": "A service consisting of a Javascript (React) frontend and Node backend for quickly and easily recording, storing, removing, and sharing short audio recordings made natively in the browser.",
 	"author": {
 		"name": "54ac",
-		"email": "54acbio@gmail.com",
+		"email": "me@54ac.ovh",
 		"url": "https://github.com/54ac"
 	},
 	"repository": "github:54ac/voice-memo",
@@ -11,7 +11,7 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run dev",
-		"dev": "concurrently \"vite\" \"nodemon server\\server.js\"",
+		"dev": "concurrently \"vite --open\" \"nodemon server\\server.js\"",
 		"build": "vite build",
 		"preview": "concurrently \"vite preview\" \"nodemon server\\server.js\""
 	},
