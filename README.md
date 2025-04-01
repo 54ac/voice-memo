@@ -33,7 +33,7 @@ This is a service consisting of a Javascript (React) frontend and Node backend f
 
 ### Where can I use this?
 
-**[Check out this demo right here.](https://54ac.ovh:5441/)**
+**[Check out this demo right here.](https://54ac.ovh/voice-memo)**
 
 ### How do I launch this myself?
 
